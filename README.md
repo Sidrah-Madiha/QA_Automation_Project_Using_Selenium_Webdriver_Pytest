@@ -1,6 +1,11 @@
 # QA-Automation-Project-using-Selenium-Webdriver-and-Pytest
 This project automates test cases for testing website "duckduckgo.com" search functionality.
 
+## DEMO OF AUTOMATED TEST RUN ON CHROME BROWSER:
+
+https://www.loom.com/share/7ca1114499734d95a0ba26e10815e0bc
+
+
 ## Test case for automation:
 Following scenarios are automated and these are also written in Gherkin and can be found in file named as `"testcases in gherkin.txt"`:
 
@@ -40,3 +45,10 @@ If these steps don't work in your project, then try to run without pipenv:
 
 1. Install Python packages directly using pip.
 2. Run tests directly using python -m pytest.
+
+
+## Possible Future Imoprovements:
+
+- Testing tests on firefox, headless chrome to see for any flaky tests.
+- Optimizing code for performance, replacing implicit waits and sleeps with explicit waits
+- Check test run on parallel threads

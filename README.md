@@ -47,7 +47,7 @@ If these steps don't work in your project, then try to run without pipenv:
 2. Run tests directly using python -m pytest.
 
 
-## Possible Future Imoprovements:
+## Possible Future Improvements:
 
 - Testing tests on firefox, headless chrome to see for any flaky tests.
 - Optimizing code for performance, replacing implicit waits and sleeps with explicit waits

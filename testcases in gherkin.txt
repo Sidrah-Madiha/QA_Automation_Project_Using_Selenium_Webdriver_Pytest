@@ -1,0 +1,52 @@
+testcase 1:
+Scenario: Basic DuckDuckGo Search with enter key press
+    Given the DuckDuckGo home page is displayed
+    When the user searches for "panda"
+    Then the search result title contains "panda"
+    And the search result query is "panda"
+    And the search result links pertain to "panda"
+
+testcase 2:
+Scenario: Basic DuckDuckGo Search with search button click
+    Given the DuckDuckGo home page is displayed
+    When the user searches for "panda"
+    Then the search result title contains "panda"
+    And the search result query is "panda"
+    And the search result links pertain to "panda"
+
+testcase 3:
+Scenario: Clicking a search link
+    Given the search result page for a search query is displayed
+    When user clicks first link on search page
+    then new page contains search query in title
+
+testcase 4:
+Scenario: "More Result" button check
+    Given the search result page for a search query "panda" is displayed
+    When user clicks "More Results" button
+    Then more results search links are displayed
+    And the search result links pertain to "panda"
+    And the page separator showing "2" should be displayed
+
+testcase 5:
+Scenario: Autocomplete suggestions pertains to search query
+    Given the DuckDuckGo home page is displayed
+    When user searches a search query "pan"
+    Then autocomplete suggestion  dropdown appears
+    And each autocomplete suggestion contains text "pan"
+
+testcase 6:
+Scenario: Search using autocomplete suggestion
+    Given the DuckDuckGo page is displayed
+    When user search a phrase and selects an autocomplete suggestion
+    Then the search result title contains selected suggestion
+    And the search result query is equal to selected suggestion
+    And the search result links pertain to selected suggestion
+
+testcase 7:
+Scenario: Do an image search
+    Given the DuckDuckGo search query page is displayed
+    When user clicks on Image tab
+    Then images link appear
+    And 100 Images appear
+    And Images have urls that contains images

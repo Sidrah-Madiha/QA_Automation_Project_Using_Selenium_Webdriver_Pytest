@@ -52,3 +52,17 @@ If these steps don't work in your project, then try to run without pipenv:
 - Testing tests on firefox, headless chrome to see for any flaky tests.
 - Optimizing code for performance, replacing implicit waits and sleeps with explicit waits
 - Check test run on parallel threads
+
+## For parallel testing:
+The tests are atomic and indepedent of each other so these can be run in parallel utilizing the system's capability.
+For running test in parallel:
+ install pytest-xdist, the pytest plugin for parallel testing:
+
+`$ pipenv install pytest-xdist`
+Finally, run the tests using the following command:
+
+`$ pipenv run python -m pytest -n 3`
+The "-n 3" arguments tells pytest to run 3 tests in parallel. We have 3 example tests, and most machines can handle 3 Web UI tests simultaneously. When the tests run, notice how 3 browser instances open at once - one per test.
+
+### Credits:
+Thanks @AndyLPK247 for the course where I learnt to use Pytest and Selenium Webdriver

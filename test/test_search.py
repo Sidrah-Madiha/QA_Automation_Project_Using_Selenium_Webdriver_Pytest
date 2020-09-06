@@ -11,6 +11,9 @@ import urllib
 import time
 from urllib.request import urlopen
 import validators
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 
 @pytest.mark.parametrize('phrase', ['panda', 'python', 'polar bear'])
 def test_opera_search(browser,phrase):
@@ -121,11 +124,12 @@ def test_autocomplete_search_click(browser,phrase):
 
   #When user search a phrase and selects second autocomplete suggestion
   search_page.search(phrase)
-  search_term = search_page.autocomplete_click( 2)
+  search_term = search_page.autocomplete_click(2)
 
-
+  time.sleep(30)
   #And the search result query is equal to selected suggestion
   assert search_term in result_page.search_input_value()
+
 
   #And the search result links pertain to selected suggestion
   match = [True for each in result_page.result_link_titles() if search_term.lower() in each.lower()]
@@ -149,8 +153,7 @@ def test_image_search(browser,phrase):
 
   #Then images link appear
   phrase_ = phrase.replace(' ', '+')
-  time.sleep(2)
-  assert "https://duckduckgo.com/?q="+phrase_+"&iax=images&ia=images" == result_page.images_link_change()
+
   time.sleep(30)
   #And More Then 100 Images appear
   assert len(result_page.images_link_list()) >= 100
@@ -158,6 +161,8 @@ def test_image_search(browser,phrase):
   #And Images have urls that contains images
   assert True == all([is_url_image(url) for url in result_page.images_link_list()])
   assert True == all([sendRequest(url) for url in result_page.images_link_list()])
+  assert "https://duckduckgo.com/?q=" + phrase_ + "&iax=images&ia=images" == result_page.images_link_change()
+
 
 def is_url_image(url):
   image_formats = ("image/png", "image/jpeg", "image/gif")

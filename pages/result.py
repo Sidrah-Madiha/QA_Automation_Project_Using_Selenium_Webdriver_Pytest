@@ -8,7 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 import time
-
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class ChromeResultPage():
@@ -22,6 +22,7 @@ class ChromeResultPage():
     IMAGES = (By.XPATH, "//a[@data-zci-link='images' and text()='Images']")
     IMAGES_SRC = (By.XPATH, "//img[@class='tile--img__img  js-lazyload']")
     SCROLL_PAUSE_TIME = 1
+    # ALL_IMAGES = (By.CLASS_NAME, 'tile  tile--img  has-detail')
     # SEPARATOR = (By.CLASS_NAME, 'result__pagenum  result__pagenum--side')
 
     def __init__(self, browser):
@@ -75,6 +76,7 @@ class ChromeResultPage():
     def images_link_click(self):
         images = self.browser.find_element(*self.IMAGES)
         images.click()
+        # WebDriverWait(self.browser, 50).until(EC.visibility_of_all_elements_located((By.XPATH, "//div[@class='tile  tile--img  has-detail']")))
 
     def images_link_change(self):
         return self.browser.current_url

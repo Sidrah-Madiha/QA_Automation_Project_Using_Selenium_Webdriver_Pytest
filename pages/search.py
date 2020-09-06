@@ -6,6 +6,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import selenium.webdriver
 import time
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class ChromeSearchPage:
     SEARCH_INPUT = (By.ID , "search_form_input_homepage")
@@ -49,6 +51,7 @@ class ChromeSearchPage:
         autoc_values = self.browser.find_elements(*self.AUTOC_VALUES)
         search_term = autoc_values[index].get_attribute("textContent")
         autoc_values[index].click()
+        # WebDriverWait(self.browser, 10).until(EC.title_contains(search_term.lower()))
         return search_term
 
 
